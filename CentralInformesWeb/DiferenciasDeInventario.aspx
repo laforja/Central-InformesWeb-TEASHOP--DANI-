@@ -1,0 +1,281 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="DiferenciasDeInventario.aspx.vb" Inherits="CentralInformesWeb.DiferenciasDeInventario" %>
+
+<%@ Register assembly="DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+     <style type="text/css">
+        .style1
+        {
+        }
+        .style5
+        {
+            height: 6px;
+            width: 34px;
+        }
+        .style7
+        {
+            height: 6px;
+            width: 78px;
+        }
+        .style9
+        {
+            height: 6px;
+            width: 228px;
+        }
+        .style13
+    {}
+    .style14
+    {
+        width: 40px;
+            height: 12px;
+        }
+        .style15
+        {
+            width: 16px;
+            height: 12px;
+        }
+    .style16
+    {
+        width: 711px;
+            height: 12px;
+        }
+        .style17
+        {
+            height: 12px;
+        }
+         .style18
+         {
+             height: 6px;
+             width: 229px;
+         }
+         .style19
+         {
+             width: 81px;
+         }
+         .style20
+         {
+             width: 252px;
+         }
+    </style>
+    <script type="text/javascript">
+      
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    &nbsp;<table style="width:100%;">
+        <tr>
+            <td class="style15">
+                </td>
+            <td class="style14">
+                <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" 
+                    ImageUrl="~/Images/note_view32.png">
+                </dx:ASPxImage>
+            </td>
+            <td class="style16">
+                <dx:ASPxLabel ID="ASPxLabel1" runat="server" Font-Bold="True" Font-Size="Small" meta:resourcekey="ASPxLabel1"
+                    ForeColor="Black" Text="Diferencias de inventario ">
+                </dx:ASPxLabel>
+            </td>
+            <td class="style17">
+                <dx:ASPxMenu ID="ASPxMenu2" runat="server" Theme="Office2010Blue" 
+                    OnItemClick="ASPxMenu2_ItemClick" Enabled="False" >
+                    <Items>
+                        <dx:MenuItem Text="Exportar a:" DropDownMode="True">
+                            <Items>
+                                <dx:MenuItem Text="Pdf">
+                                    <image url="~/Images/ExportToPDF_32x32.png">
+                                    </image>
+                                </dx:MenuItem>
+                                <dx:MenuItem Text="Excel">
+                                    <image url="~/Images/ExportToXLS_32x32.png">
+                                    </image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                    </Items>
+                </dx:ASPxMenu>
+            </td>
+        </tr>
+        <tr>
+            <td class="style13" colspan="4">
+                <hr style="color: #516B92" />
+            </td>
+        </tr>
+      </table>
+      <table style="width:100%;">
+        <tr>
+            <td class="style1">
+                <table style="width:100%;">
+                    <tr>
+                        <td class="style5">
+                        </td>
+                        <td class="style7">
+                            <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Inventario:" meta:resourcekey="ASPxLabel2"
+                                Theme="Office2010Blue">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td class="style18">
+                            <dx:ASPxComboBox ID="cmbInventario" runat="server" EnableTheming="True" OnInit="cmbInventario_Init"
+                                Theme="Office2010Blue" AutoPostBack="True"  onselectedindexchanged="cmbInventario_SelectedIndexChanged"
+                                EnableCallbackMode="True" PopupHorizontalAlign="NotSet" >
+                                <Columns>
+                                    <dx:ListBoxColumn Caption="Inventario" FieldName="IdInventario" 
+                                        Name="Inventario" />
+                                </Columns>
+                            </dx:ASPxComboBox>
+                        </td>
+                        <td class="style19">
+                            <dx:ASPxLabel ID="ASPxLabel9" runat="server" Text="Valorado a:" 
+                                Theme="Office2010Blue" meta:resourcekey="ASPxLabel9">
+                            </dx:ASPxLabel>
+                            &nbsp;</td>
+                        <td class="style9">
+                             <dx:ASPxComboBox ID="ASPxComboBox1" runat="server" EnableTheming="True" 
+                                SelectedIndex="0" Theme="Office2010Blue" AutoPostBack="True" 
+                                EnableCallbackMode="True" meta:resourcekey="ASPxComboBox1"
+                                onselectedindexchanged="ASPxComboBox1_SelectedIndexChanged" OnInit="ASPxComboBox1_Init"
+                                 style="margin-left: 8px" Enabled="False" >
+                                <%--<Items>
+                                    <dx:ListEditItem Selected="True" Text="Sin valorar" Value="Sin valorar" meta:resourcekey="SinValorar"/>
+                                    <dx:ListEditItem Text="1" Value="1" meta:resourcekey="Tarifa1"/>
+                                    <dx:ListEditItem Text="3" Value="3" meta:resourcekey="Tarifa2"/>
+                                    <dx:ListEditItem Text="TN" Value="TN" meta:resourcekey="TarifaNeta"/>
+                                </Items>--%>
+                            </dx:ASPxComboBox>
+                            </td>
+                        <td class="style20">
+                             <dx:ASPxCheckBox ID="chkAgrupar" runat="server" Text="Agrupar por famílias" 
+                                 AutoPostBack="True" OnCheckedChanged="chkAgrupar_CheckedChanged"
+                                Theme="Office2010Blue" meta:resourcekey="chkAgrupar" Enabled="False">
+                            </dx:ASPxCheckBox>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                   </tr>
+            </table>
+            <p></p>
+                  <dx:ASPxGridView ID="GridDiferenciasInv" runat="server" 
+                    AutoGenerateColumns="False"  Width="100%" 
+                    onhtmldatacellprepared="GridDiferenciasInv_HtmlDataCellPrepared" 
+                    OnDataBinding="GridDiferenciasInv_DataBinding" oncustomcallback="GridDiferenciasInv_CustomCallback"
+                    Theme="Office2010Blue" 
+                    OnCustomUnboundColumnData ="GridDiferenciasInv_CustomUnboundColumnData" 
+                    onsummarydisplaytext="GridDiferenciasInv_SummaryDisplayText" 
+                    meta:resourcekey="GridDiferenciasInv" Enabled="False">
+                    <Columns>
+                        <dx:GridViewDataTextColumn Caption="Cód.Art." FieldName="Articulo"
+                            VisibleIndex="0">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Stock real" FieldName="StockReal"
+                            VisibleIndex="2">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <PropertiesTextEdit DisplayFormatString="f3"></PropertiesTextEdit>
+                            <FooterCellStyle Font-Bold="True" ForeColor="Brown"></FooterCellStyle>
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Cant.Inv." FieldName="Cantidad"
+                            VisibleIndex="3">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <PropertiesTextEdit DisplayFormatString="f3"></PropertiesTextEdit>
+                            <FooterCellStyle Font-Bold="True" ForeColor="Brown"></FooterCellStyle>
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn FieldName="Diferencia" UnboundType="Decimal"
+                            VisibleIndex="4">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <PropertiesTextEdit DisplayFormatString="f3"></PropertiesTextEdit>
+                            <FooterCellStyle Font-Bold="True" ForeColor="Brown"></FooterCellStyle>
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                         <dx:GridViewDataTextColumn Caption="Precio (€)" FieldName="Precio"
+                            Name="Precio" VisibleIndex="5" Visible="False">
+                             <PropertiesTextEdit DisplayFormatString="f2"></PropertiesTextEdit>
+                             <HeaderStyle HorizontalAlign="Center" />
+                             <FooterCellStyle Font-Bold="True" ForeColor="Brown"></FooterCellStyle>
+                             <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn UnboundType="decimal" FieldName="Importe"
+                           VisibleIndex="6">
+                            <PropertiesTextEdit DisplayFormatString="f2"></PropertiesTextEdit>
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <FooterCellStyle Font-Bold="True" ForeColor="Brown"></FooterCellStyle>
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                       
+                        <dx:GridViewDataTextColumn Caption="Descripción" FieldName="Descripcion"
+                            VisibleIndex="1" Width="400px">
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                        <dx:GridViewDataTextColumn Caption="Família" FieldName="DescFamilia" 
+                            Visible="False" VisibleIndex="7">
+                            <Settings AutoFilterCondition="Contains" />
+                        </dx:GridViewDataTextColumn>
+                    </Columns>
+                   <SettingsPager PageSize="200" AlwaysShowPager="True" >
+            <PageSizeItemSettings Visible="True" Items= "10, 20, 50, 100, 200">
+            </PageSizeItemSettings>
+         </SettingsPager>
+            <Settings ShowFilterRow="True" GridLines="Vertical" ShowGroupPanel="False" />
+            <Settings  ShowFooter="True" ShowGroupFooter="VisibleIfExpanded"  />
+           
+            <GroupSummary>
+                <dx:ASPxSummaryItem FieldName="StockReal" ShowInGroupFooterColumn="StockReal" SummaryType="Sum"/>
+                <dx:ASPxSummaryItem FieldName="Cantidad" ShowInGroupFooterColumn="Cantidad" SummaryType="Sum" />
+                <dx:ASPxSummaryItem FieldName="Diferencia" ShowInGroupFooterColumn="Diferencia" SummaryType="Sum" />
+                <dx:ASPxSummaryItem FieldName="Precio" ShowInGroupFooterColumn="Precio" SummaryType="Sum" />
+                <dx:ASPxSummaryItem FieldName="Importe" ShowInGroupFooterColumn="Importe" SummaryType="Sum" />
+<dx:ASPxSummaryItem SummaryType="Sum" FieldName="StockReal"></dx:ASPxSummaryItem>
+<dx:ASPxSummaryItem SummaryType="Sum" FieldName="Cantidad"></dx:ASPxSummaryItem>
+<dx:ASPxSummaryItem SummaryType="Sum" FieldName="Diferencia"></dx:ASPxSummaryItem>
+<dx:ASPxSummaryItem SummaryType="Sum" FieldName="Precio"></dx:ASPxSummaryItem>
+<dx:ASPxSummaryItem SummaryType="Sum" FieldName="Importe"></dx:ASPxSummaryItem>
+            </GroupSummary>
+         
+            <SettingsDataSecurity AllowDelete="False" AllowEdit="False" 
+                AllowInsert="False" />
+
+<Settings ShowFilterRow="True" ShowFooter="True" GridLines="Vertical"></Settings>
+
+<SettingsDataSecurity AllowInsert="False" AllowEdit="False" AllowDelete="False"></SettingsDataSecurity>
+
+         <Styles>
+            <AlternatingRow Enabled="True"/>
+            <AlternatingRow Enabled="True"></AlternatingRow>
+         </Styles>
+          <TotalSummary>
+            <dx:ASPxSummaryItem FieldName="StockReal" SummaryType="Sum" />
+            <dx:ASPxSummaryItem FieldName="Cantidad" SummaryType="Sum" />
+            <dx:ASPxSummaryItem FieldName="Diferencia" SummaryType="Sum" />
+            <dx:ASPxSummaryItem FieldName="Precio" SummaryType="Sum" />
+            <dx:ASPxSummaryItem FieldName="Importe" SummaryType="Sum" />
+          </TotalSummary>
+                </dx:ASPxGridView>
+                </table>
+                    <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" 
+        runat="server" GridViewID="GridDiferenciasInv" ReportHeader="{\rtf1\ansi\ansicpg1252\deff0\deflang3082{\fonttbl{\f0\fnil\fcharset0 Times New Roman;}}
+\viewkind4\uc1\pard\qc\b\f0\fs40 Listado de diferencias de inventario\par
+\par
+\b0\fs20\par
+}
+" PaperKind="A4">
+                        <Styles>
+                            <AlternatingRowCell BackColor="#E2DDDC">
+                            </AlternatingRowCell>
+                        </Styles>
+                        <PageHeader Right="[Date Printed]">
+                        </PageHeader>
+                        <PageFooter Left="[Page # of Pages #]">
+                        </PageFooter>
+                </dx:ASPxGridViewExporter>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
+</asp:Content>

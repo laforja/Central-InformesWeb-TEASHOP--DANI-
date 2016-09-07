@@ -1,0 +1,405 @@
+﻿<%@ Page Title="Informes central Web" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false"
+    CodeBehind="Default.aspx.vb" Inherits="CentralInformesWeb._Default" %>
+
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxCallbackPanel" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxMenu" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGridView.Export" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Dashboard.v14.1.Web, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.DashboardWeb" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxDataView" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxMenu" tagprefix="dx1" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxFormLayout" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+     <style type="text/css">
+        .style1
+        {
+        }
+        .style5
+        {
+            height: 6px;
+            width: 34px;
+        }
+        .style13
+    {}
+    .style14
+    {
+        width: 40px;
+            height: 12px;
+        }
+        .style15
+        {
+            width: 16px;
+            height: 12px;
+        }
+    .style16
+    {
+        width: 711px;
+            height: 12px;
+        }
+        .style17
+        {
+            height: 12px;
+        }
+         .style18
+         {
+             height: 6px;
+             width: 10px;
+         }
+         .style19
+         {
+             width: 81px;
+         }
+         .style20
+         {
+             width: 88px;
+         }
+         .style21
+         {
+             height: 19px;
+             width: 34px;
+         }
+         .style24
+         {
+             width: 81px;
+             height: 19px;
+         }
+         .style26
+         {
+             width: 88px;
+             height: 19px;
+         }
+         .style27
+         {
+             height: 19px;
+         }
+         .style28
+         {
+             height: 19px;
+         }
+         .style29
+         {
+             height: 6px;
+             width: 95px;
+         }
+         .style31
+         {
+             height: 19px;
+             width: 5px;
+         }
+         .style32
+         {
+             height: 6px;
+             width: 5px;
+         }
+         .style33
+         {
+             width: 9px;
+             height: 19px;
+         }
+         .style34
+         {
+             width: 9px;
+         }
+         .style35
+         {
+             width: 11px;
+             height: 19px;
+         }
+         .style36
+         {
+             width: 11px;
+         }
+         .style37
+         {
+             width: 10px;
+             height: 19px;
+         }
+         .style38
+         {
+             height: 6px;
+             width: 33px;
+         }
+         .style39
+         {
+             width: 33px;
+             height: 19px;
+         }
+    </style>
+    <script type="text/javascript">
+      
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    &nbsp;<table style="width:100%;">
+        <tr>
+            <td class="style15">
+                </td>
+            <td class="style14">
+                <dx:ASPxImage ID="ASPxImage1" runat="server" ShowLoadingImage="true" 
+                    ImageUrl="~/Images/presentation_chart32.png">
+                </dx:ASPxImage>
+            </td>
+            <td class="style16">
+                <dx:ASPxLabel ID="ASPxLabel4" runat="server" Font-Bold="True" Font-Size="Small" 
+                    ForeColor="Black" Text="Estadísticas generales" Theme="Office2010Blue">
+                </dx:ASPxLabel>
+            </td>
+            <td class="style17">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td class="style13" colspan="4">
+                <hr style="color: #516B92" />
+            </td>
+        </tr>
+      </table>
+      <table style="width:100%;">
+        <tr>
+            <td class="style1">
+                <table style="width:100%; position: relative;" align="center">
+                    <tr>
+                        <td class="style21">
+                        </td>
+                        <td class="style27" colspan="4">
+                            <dx:ASPxLabel ID="txtTienda" runat="server" Font-Bold="True" Text="Tienda:">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td class="style31">
+                             </td>
+                        <td class="style26">
+                             &nbsp;</td>
+                        <td class="style33">
+                             </td>
+                        <td class="style26">
+                             &nbsp;</td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style27">
+                            </td>
+                   </tr>
+                    <tr>
+                        <td class="style21">
+                        </td>
+                        <td class="style27" colspan="4">
+                            <dx:ASPxLabel ID="txtFecha" runat="server" Font-Bold="True" Text="Fecha:">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td class="style31">
+                             </td>
+                        <td class="style26">
+                             &nbsp;</td>
+                        <td class="style33">
+                             </td>
+                        <td class="style26">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style35">
+                             </td>
+                        <td class="style27">
+                            </td>
+                   </tr>
+                    <tr>
+                        <td class="style21">
+                            &nbsp;</td>
+                        <td class="style28">
+                            &nbsp;</td>
+                        <td class="style39">
+                            &nbsp;</td>
+                        <td class="style37">
+                            &nbsp;</td>
+                        <td class="style24">
+                            &nbsp;</td>
+                        <td class="style31">
+                             &nbsp;</td>
+                        <td class="style26">
+                             &nbsp;</td>
+                        <td class="style33">
+                             &nbsp;</td>
+                        <td class="style26">
+                             &nbsp;</td>
+                        <td class="style35">
+                             &nbsp;</td>
+                        <td class="style35">
+                             &nbsp;</td>
+                        <td class="style35">
+                             &nbsp;</td>
+                        <td class="style35">
+                             &nbsp;</td>
+                        <td class="style27">
+                            &nbsp;</td>
+                   </tr>
+                    <tr>
+                        <td class="style5">
+                            &nbsp;</td>
+                        <td class="style29">
+                            <dx:ASPxTextBox ID="ASPxTextBox3" runat="server" BackColor="#99CC00" 
+                                Enabled="False" Font-Bold="False" Font-Size="Small" Font-Underline="False" 
+                                ForeColor="White" Height="45px" HorizontalAlign="Left" Text="FACTURACIÓN" 
+                                Width="124px">
+                                <Border BorderStyle="None" />
+                                <BorderLeft BorderStyle="Solid" />
+                                <BorderTop BorderStyle="Solid" />
+                                <BorderRight BorderStyle="Solid" />
+                            </dx:ASPxTextBox>
+                            <dx:ASPxTextBox ID="txtFacturacion" runat="server" BackColor="#99CC00" 
+                                Enabled="False" Font-Size="Large" ForeColor="White" Height="45px" 
+                                HorizontalAlign="Left" Text="0,00" Width="124px">
+                                <MaskSettings Mask="&lt;0..99999g&gt;.&lt;00..99&gt; €" />
+                                <Border BorderStyle="None" />
+                                <BorderLeft BorderStyle="Solid" />
+                                <BorderRight BorderStyle="Solid" />
+                                <BorderBottom BorderStyle="Solid" />
+                            </dx:ASPxTextBox>
+                        </td>
+                        <td class="style38" bgcolor="#99CC00" rowspan="0">
+                            <dx:ASPxImage ID="ASPxImage2" runat="server" ImageUrl="~/Images/cubes.png" 
+                                ShowLoadingImage="true">
+                            </dx:ASPxImage>
+                        </td>
+                        <td class="style18">
+                            &nbsp;</td>
+                        <td class="style19">
+                            <dx:ASPxTextBox ID="ASPxTextBox5" runat="server" BackColor="#0099FF" 
+                                Enabled="False" Font-Bold="False" Font-Size="Small" Font-Strikeout="False" 
+                                Font-Underline="False" ForeColor="White" Height="45px" HorizontalAlign="Center" 
+                                Text="Nº TICKETS" Width="145px">
+                                <Border BorderStyle="None" />
+                                <BorderLeft BorderStyle="Solid" />
+                                <BorderTop BorderStyle="Solid" />
+                                <BorderRight BorderStyle="Solid" />
+                            </dx:ASPxTextBox>
+                            <dx:ASPxTextBox ID="txtNTickets" runat="server" BackColor="#0099FF" 
+                                Enabled="False" Font-Size="Large" ForeColor="White" Height="45px" 
+                                HorizontalAlign="Center" Text="0" Width="145px">
+                                <MaskSettings Mask="&lt;0..10000&gt;" />
+                                <Border BorderStyle="None" />
+                                <BorderLeft BorderStyle="Solid" />
+                                <BorderRight BorderStyle="Solid" />
+                                <BorderBottom BorderStyle="Solid" />
+                            </dx:ASPxTextBox>
+                        </td>
+                        <td class="style32">
+                             &nbsp;</td>
+                        <td class="style20">
+                             <dx:ASPxTextBox ID="ASPxTextBox7" runat="server" BackColor="#FF9933" 
+                                 Enabled="False" Font-Bold="False" Font-Size="Small" Font-Underline="False" 
+                                 ForeColor="White" Height="45px" HorizontalAlign="Center" Text="Nº LINEAS" 
+                                 Width="145px">
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderTop BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                             <dx:ASPxTextBox ID="txtNLineas" runat="server" BackColor="#FF9933" 
+                                 Enabled="False" Font-Size="Large" ForeColor="White" Height="45px" 
+                                 HorizontalAlign="Center" Text="0" Width="145px">
+                                 <MaskSettings Mask="&lt;0..10000&gt;" />
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                                 <BorderBottom BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                        </td>
+                        <td class="style34">
+                             &nbsp;</td>
+                        <td class="style20">
+                             <dx:ASPxTextBox ID="ASPxTextBox9" runat="server" BackColor="#339933" 
+                                 Enabled="False" Font-Bold="False" Font-Size="Small" Font-Underline="False" 
+                                 ForeColor="White" Height="45px" HorizontalAlign="Center" Text="TICKET MEDIO" 
+                                 Width="145px">
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderTop BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                             <dx:ASPxTextBox ID="txtTicketMedio" runat="server" BackColor="#339933" 
+                                 Enabled="False" Font-Size="Large" ForeColor="White" Height="45px" 
+                                 HorizontalAlign="Center" Text="0,00" Width="145px">
+                                 <MaskSettings Mask="&lt;0..99999g&gt;.&lt;00..99&gt;" />
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                                 <BorderBottom BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                        </td>
+                        <td class="style36">
+                             &nbsp;</td>
+                        <td class="style36">
+                             <dx:ASPxTextBox ID="ASPxTextBox11" runat="server" BackColor="#CC3300" 
+                                 Enabled="False" Font-Bold="False" Font-Size="Small" Font-Underline="False" 
+                                 ForeColor="White" Height="45px" HorizontalAlign="Center" Text="UPT" 
+                                 Width="145px">
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderTop BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                             <dx:ASPxTextBox ID="txtUpt" runat="server" BackColor="#CC3300" Enabled="False" 
+                                 Font-Size="Large" ForeColor="White" Height="45px" HorizontalAlign="Center" 
+                                 Text="0,00" Width="145px">
+                                 <MaskSettings Mask="&lt;0..99999g&gt;.&lt;00..99&gt;" />
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                                 <BorderBottom BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                        </td>
+                        <td class="style36">
+                             &nbsp;</td>
+                        <td class="style36">
+                             <dx:ASPxTextBox ID="ASPxTextBox13" runat="server" BackColor="#999966" 
+                                 Enabled="False" Font-Bold="False" Font-Size="Small" Font-Underline="False" 
+                                 ForeColor="White" Height="45px" HorizontalAlign="Center" Text="PMA" 
+                                 Width="145px">
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderTop BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                             <dx:ASPxTextBox ID="txtPma" runat="server" BackColor="#999966" Enabled="False" 
+                                 Font-Size="Large" ForeColor="White" Height="45px" HorizontalAlign="Center" 
+                                 Text="0,00" Width="145px">
+                                 <MaskSettings Mask="&lt;0..99999g&gt;.&lt;00..99&gt;" />
+                                 <Border BorderStyle="None" />
+                                 <BorderLeft BorderStyle="Solid" />
+                                 <BorderRight BorderStyle="Solid" />
+                                 <BorderBottom BorderStyle="Solid" />
+                             </dx:ASPxTextBox>
+                        </td>
+                        <td>
+                            &nbsp;</td>
+                   </tr>
+            </table>
+            <p>&nbsp;</p>
+                  </table>
+                    </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">
+</asp:Content>

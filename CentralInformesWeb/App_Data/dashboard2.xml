@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="es-ES">
+  <Title Text="Dashboard" Alignment="Left" />
+  <DataSources>
+    <SqlDataSource ComponentName="DataSource1">
+      <Name>Dashboard</Name>
+      <Connection Name="CentralInformesWeb.My.MySettings.Setting" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="Dashboard">
+        <ProcName>Dashboard</ProcName>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="Dashboard">
+          <View Name="Dashboard">
+            <Field Name="FechaFactura" Type="DateTime" />
+            <Field Name="Nombre" Type="String" />
+            <Field Name="Facturacion" Type="Double" />
+            <Field Name="NTickets" Type="Int32" />
+            <Field Name="NLineas" Type="Int32" />
+            <Field Name="TicketMedio" Type="Double" />
+            <Field Name="Upt" Type="Decimal" />
+            <Field Name="Pma" Type="Double" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" CommandTimeout="0" />
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="FechaDesde" Type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2016-07-07T00:00:00+02:00" AllowMultiselect="true" />
+    <Parameter Name="FechaHasta" Type="System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2016-07-07T23:59:00+02:00" />
+  </Parameters>
+  <Items>
+    <Card ComponentName="cardDashboardItem1" Name="DIARIO" DataSource="DataSource1" DataMember="Dashboard" ContentArrangementMode="FixedColumnCount" ContentLineCount="6">
+      <DataItems>
+        <Measure DataMember="Facturacion" UniqueName="DataItem0">
+          <NumericFormat FormatType="Currency" Unit="Ones" />
+        </Measure>
+        <Measure DataMember="NTickets" UniqueName="DataItem1" />
+        <Measure DataMember="NLineas" UniqueName="DataItem2" />
+        <Measure DataMember="TicketMedio" UniqueName="DataItem3">
+          <NumericFormat FormatType="Number" Unit="Ones" />
+        </Measure>
+        <Measure DataMember="Upt" UniqueName="DataItem4">
+          <NumericFormat FormatType="Number" />
+        </Measure>
+        <Measure DataMember="Pma" UniqueName="DataItem5">
+          <NumericFormat FormatType="Number" Unit="Ones" />
+        </Measure>
+      </DataItems>
+      <Card Name="FACTURACIÓN" ShowStartEndValues="false">
+        <ActualValue UniqueName="DataItem0" />
+        <DeltaOptions ValueType="ActualValue" ResultIndicationMode="NoIndication" ResultIndicationThresholdType="Absolute" />
+      </Card>
+      <Card Name="Nº TICKETS">
+        <ActualValue UniqueName="DataItem1" />
+      </Card>
+      <Card Name="Nª LINEAS">
+        <ActualValue UniqueName="DataItem2" />
+      </Card>
+      <Card Name="TICKET MEDIO">
+        <ActualValue UniqueName="DataItem3" />
+      </Card>
+      <Card Name="UPT" ShowStartEndValues="false">
+        <ActualValue UniqueName="DataItem4" />
+        <DeltaOptions ValueType="ActualValue" ResultIndicationMode="NoIndication" ResultIndicationThresholdType="Absolute" />
+      </Card>
+      <Card Name="PMA">
+        <ActualValue UniqueName="DataItem5" />
+      </Card>
+    </Card>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutGroup>
+        <LayoutGroup Orientation="Vertical">
+          <LayoutGroup>
+            <LayoutItem DashboardItem="cardDashboardItem1" Weight="109.68609865470853" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </LayoutGroup>
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

@@ -1,0 +1,115 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="CentralInformesWeb.Site" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"
+    Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxMenu" tagprefix="dx" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Informes central Web</title>
+    <link href="~/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+            <a href="#"><img src="images/logo.PNG" alt="Laforja Internacional, S.A."></img></a>
+            <h4 style="font-family: 'Verdana'; color: #000000; font-size: small; font-weight: bold; vertical-align: top; text-align: center;">
+                Informes Central Web
+            </h4> 
+          </div>
+           <div class="loginDisplay" style="font-size: small; float: right; vertical-align: middle;">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                       <!-- [ <a href="~/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ] -->
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <div style="text-align: center; font-size: small;">
+                        <dx:ASPxLabel ID="ASPxLabel1" runat="server" Text="ASPxLabel" ForeColor="#006699" Font-Bold="True" Font-Size="X-Small">
+                            </dx:ASPxLabel>
+                            <br />
+                         <dx:ASPxLabel ID="lblBienvenido" runat="server" Text="Bienvenido/a "  meta:resourcekey="lblBienvenido"></dx:ASPxLabel><span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" meta:resourcekey="HeadLoginName"/></span> <br />
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" meta:resourcekey="HeadLoginStatus" LogoutPageUrl="~/"/>
+                        </div>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+           <div class="clear hideSkiplink">
+                <dx:ASPxMenu ID="ASPxMenu1" runat="server" Theme="Office2010Blue"  
+                    meta:resourcekey="ASPxMenu1" Visible="False">
+                    <Items>
+                        <dx:MenuItem DropDownMode="True" Text="Caja" meta:resourcekey="Caja" 
+                            Visible="False">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/Default.aspx"  Text="Estadísticas generales" meta:resourcekey="Estadisticas">
+                                    <Image Url="~/Images/presentation_chart.png">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem  NavigateUrl="~/DiarioDeVentas.aspx" Text="Diario de ventas" meta:resourcekey="DiarioVentas" 
+                                    BeginGroup="True">
+                                    <Image Url="~/Images/document_chart.png">
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                        <dx:MenuItem DropDownMode="True" Text="Stocks" meta:resourcekey="Stocks">
+                            <Items>
+                                <dx:MenuItem  NavigateUrl="~/Existencias.aspx" Text="Existencias" 
+                                    meta:resourcekey="Existencias" Visible="False">
+                                    <Image Url="~/Images/cubes24.png">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="~/DiferenciasDeInventario.aspx" Text="Diferencias de inventario" meta:resourcekey="Diferencias">
+                                    <Image Url="~/Images/note_view.png">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem BeginGroup="True" NavigateUrl="~/PedidosDeReposicion.aspx" meta:resourcekey="PedidosReposicion"
+                                    Text="Pedidos de reposición" Visible="False">
+                                    <Image Url="~/Images/desktop24.png">
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                        <dx:MenuItem Text="Compras" meta:resourcekey="Compras" Visible="False">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/EntradaMercanciasProveedor.aspx" 
+                                    Text="Entrada de mercancías de proveedor">
+                                    <Image Url="~/Images/box_preferences.png">
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                        <dx:MenuItem Text="Ayuda" meta:resourcekey="Ayuda">
+                            <Items>
+                                <dx:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de..." meta:resourcekey="Acercade">
+                                    <Image Url="~/Images/help.png">
+                                    </Image>
+                                </dx:MenuItem>
+                                <dx:MenuItem NavigateUrl="http://soporte.laforja.com/netretina_laforja.exe" BeginGroup="True" Text="Soporte técnico" meta:resourcekey="SoporteTecnico" >
+                                    <Image Url="~/Images/user_headset.png">
+                                    </Image>
+                                </dx:MenuItem>
+                            </Items>
+                        </dx:MenuItem>
+                    </Items>
+                </dx:ASPxMenu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+         <asp:ContentPlaceHolder id="Footer" runat="server" />
+    </div>
+    </form>
+</body>
+</html>

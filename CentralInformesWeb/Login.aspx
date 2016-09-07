@@ -1,0 +1,173 @@
+﻿<%@ Page Title="Iniciar sesión" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false"
+    CodeBehind="Login.aspx.vb" Inherits="CentralInformesWeb.Login" %>
+
+<%@ Register assembly="DevExpress.Web.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <style type="text/css">
+        .style1
+        {
+        }
+        .style2
+        {
+            width: 41px;
+        }
+        .style3
+        {
+            width: 9px;
+        }
+        .style4
+        {
+            height: 32px;
+        }
+        .style5
+        {
+            width: 671px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+        <table style="width:100%;">
+            <tr>
+                <td class="style3">
+                    &nbsp;</td>
+                <td class="style2">
+                    <dx:ASPxImage ID="ASPxImage1" runat="server" 
+                        ImageUrl="~/Images/UserKey_32x32.png" ShowLoadingImage="true">
+                    </dx:ASPxImage>
+                </td>
+                <td class="style5">
+                    <dx:ASPxLabel ID="lblTitulo" runat="server" Font-Bold="True" Font-Size="Small" 
+                        Text="Inicio de sesión" ForeColor="Black" meta:resourcekey="lblTitulo">
+                    </dx:ASPxLabel>
+                </td>
+                <td align="right" valign="middle">
+                    <dx:ASPxMenu ID="ASPxMenu2" runat="server" Theme="Office2010Blue" 
+                        style="margin-left: 0px" 
+                        EnableTheming="True" HorizontalAlign="Center" VerticalAlign="Middle" 
+                        ItemSpacing="0px" Visible="False" >
+                        <Items>
+                            <dx:MenuItem Text="" NavigateUrl="~/Login.aspx?lang=ES" Selected="True" 
+                                ToolTip="Castellano">
+                                <Image Height="20px" Url="~/Images/LANGESP.png" Width="20px">
+                                </Image>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </dx:MenuItem>
+                            <dx:MenuItem Text="" NavigateUrl="~/Login.aspx?lang=ca" ToolTip="Català">
+                                <Image Height="20px" Url="~/Images/LANGCAT.png" Width="20px">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/Login.aspx?lang=EN" Text="" ToolTip="English">
+                                <Image Height="20px" Url="~/Images/LANGEN.png" Width="20px">
+                                </Image>
+                            </dx:MenuItem>
+                            <dx:MenuItem NavigateUrl="~/Login.aspx?lang=fr" Text="" ToolTip="Français">
+                                <Image Height="20px" Url="~/Images/LANGFR.png" Width="20px">
+                                </Image>
+                            </dx:MenuItem>
+                        </Items>
+                    </dx:ASPxMenu>
+                </td>
+            </tr>
+            <tr>
+                <td class="style1" colspan="4">
+                    <hr style="color: #516B92" />
+                </td>
+            </tr>
+        </table>
+    <p align="center" id ="Informacion" meta:resourcekey="Informacion">
+        <dx:ASPxLabel ID="ASPxLabel1" runat="server" meta:resourcekey="ASPxLabel1"
+            Text="Especifique su nombre de usuario y contraseña.">
+        </dx:ASPxLabel>
+    </p>
+    <div style="text-align: center;">
+    <div style="width: 400px; margin-left: auto; margin-right:auto;">
+    <asp:Login ID="LoginUser" runat="server" EnableViewState="False" 
+        BackColor="#EFF3FB" BorderColor="#B5C7DE" BorderPadding="9" BorderStyle="Solid" 
+        BorderWidth="1px" Font-Names="Verdana" Font-Size="0.9em" ForeColor="#333333" 
+        Width="362px">
+        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+        <LayoutTemplate>
+            <table cellpadding="9" cellspacing="0" style="border-collapse:collapse;">
+                <tr>
+                    <td align="center">
+                        <table cellpadding="0" style="width:362px;">
+                            <tr>
+                                <td align="center" colspan="2" 
+                                    style="color:White;background-color:#507CD1;font-size:1em;font-weight:bold;" 
+                                    class="style4" meta:resourcekey="Iniciar">
+                                <dx:ASPxLabel ID="ASPxLabel2" runat="server" Text="Iniciar sesión   " 
+                                        Font-Bold="True" Font-Size="Medium" meta:resourcekey="ASPxLabel2">
+                                </dx:ASPxLabel></td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    &nbsp;</td>
+                                <td>
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" meta:resourcekey="UserNameLabel">Nombre de usuario:</asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="UserName" runat="server" Font-Size="Small" Width="180px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                        ControlToValidate="UserName" 
+                                        ErrorMessage="El nombre de usuario es obligatorio." 
+                                        ToolTip="El nombre de usuario es obligatorio." ValidationGroup="LoginUser">*</asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password" meta:resourcekey="Password">Contraseña:</asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="Password" runat="server" Font-Size="Small" TextMode="Password" 
+                                        Width="180px"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                        ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." 
+                                        ToolTip="La contraseña es obligatoria." ValidationGroup="LoginUser">*</asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    &nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:CheckBox ID="RememberMe" runat="server" 
+                                        Text="Recordármelo la próxima vez." meta:resourcekey="RememberMe" 
+                                        Visible="False"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" colspan="2" style="color:Red;">
+                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right" colspan="2">
+                                    <asp:Button ID="LoginButton" runat="server" BackColor="White" 
+                                        BorderColor="#507CD1" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" 
+                                        Font-Names="Verdana" Font-Size="0.9em" ForeColor="#284E98" 
+                                        Text="Inicio de sesión" ValidationGroup="LoginUser" meta:resourcekey="LoginButton"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </LayoutTemplate>
+        <LoginButtonStyle BackColor="White" BorderColor="#507CD1" BorderStyle="Solid" 
+            BorderWidth="1px" Font-Names="Verdana" Font-Size="0.9em" ForeColor="#284E98" />
+        <TextBoxStyle Font-Size="0.9em" />
+        <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" 
+            ForeColor="White" />
+             </asp:Login>
+             <br />
+             </div>
+             </div>
+</asp:Content>
